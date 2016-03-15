@@ -6,12 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>PinkHack</title>
-  <meta name="description" content="Learn code the pink way.
-">
+  <title>SQL View cannot contain a subquery?!</title>
+  <meta name="description" content="There are two situations:">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://yourdomain.com/">
+  <link rel="canonical" href="http://yourdomain.com/database/2016/03/16/sql-view-cannot-contain-a-subview.html">
   <link rel="alternate" type="application/rss+xml" title="PinkHack" href="http://yourdomain.com/feed.xml">
 </head>
 
@@ -55,25 +54,69 @@
 
     <div class="page-content">
       <div class="wrapper">
-        <div class="home">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
-  <h1 class="page-heading">Posts</h1>
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">SQL View cannot contain a subquery?!</h1>
+    <p class="post-meta"><time datetime="2016-03-16T08:15:09+11:00" itemprop="datePublished">Mar 16, 2016</time></p>
+  </header>
 
-  <ul class="post-list">
-    
-      <li>
-        <span class="post-meta">Mar 16, 2016</span>
+  <div class="post-content" itemprop="articleBody">
+    <p>There are two situations:</p>
 
-        <h2>
-          <a class="post-link" href="/database/2016/03/16/sql-view-cannot-contain-a-subview.html">SQL View cannot contain a subquery?!</a>
-        </h2>
-      </li>
-    
-  </ul>
+<ul>
+  <li><strong>1. BUG？</strong></li>
+</ul>
 
-  <p class="rss-subscribe">subscribe <a href="/feed.xml">via RSS</a></p>
+<p>Actually,in Oracle Database, View can contain a sub-query.</p>
 
-</div>
+<p>However,in MYSQL5, there is a <a href="http://bugs.mysql.com/bug.php?id=16757">bug</a>, you cannot use sub-query in a from clause.
+‌</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="p">[</span><span class="mi">24</span> <span class="no">Jan</span> <span class="mi">2006</span> <span class="mi">21</span><span class="p">:</span><span class="mi">19</span><span class="p">]</span> <span class="no">Neil</span> <span class="no">Pierson</span>
+<span class="no">Description</span><span class="p">:</span>
+<span class="no">As</span> <span class="n">you</span> <span class="n">are</span> <span class="n">already</span> <span class="n">aware</span><span class="p">,</span> 
+<span class="s2">"mysql&gt; CREATE VIEW v3 AS SELECT * FROM 
+-&gt; (SELECT s1 FROM t1) AS x; 
+ERROR 1349 (HY000): View's SELECT contains a subquery in the FROM clause 
+You can't create a view if the view's SELECT definition has a FROM clause that contains a subquery. This restriction is a flaw."</span>
+
+<span class="no">The</span> <span class="n">removal</span> <span class="n">of</span> <span class="n">this</span> <span class="n">restriction</span> <span class="n">would</span> <span class="n">be</span> <span class="o">*</span><span class="n">greatly</span><span class="o">*</span> <span class="n">appreciated!</span>
+
+<span class="no">How</span> <span class="n">to</span> <span class="ss">repeat:
+</span><span class="no">CREATE</span> <span class="no">VIEW</span> <span class="n">v3</span> <span class="no">AS</span> <span class="no">SELECT</span> <span class="o">*</span> <span class="no">FROM</span> <span class="p">(</span><span class="no">SELECT</span> <span class="n">s1</span> <span class="no">FROM</span> <span class="n">t1</span><span class="p">)</span> <span class="no">AS</span> <span class="n">x</span><span class="p">;</span>
+
+<span class="no">Suggested</span> <span class="ss">fix:
+</span><span class="no">I</span> <span class="n">was</span> <span class="n">sorta</span> <span class="n">hoping</span> <span class="n">you</span> <span class="n">guys</span> <span class="n">could</span> <span class="n">fix</span> <span class="n">it</span><span class="o">.</span></code></pre></figure>
+
+<ul>
+  <li><strong>2. UPDATE VIEW</strong></li>
+</ul>
+
+<p>The SQL UPDATE VIEW command can be used to modify the data of a view.</p>
+
+<p>All views are not updatable. So, UPDATE command is not applicable to all views. An updatable view is one which allows performing an UPDATE command on itself without affecting any other table.</p>
+
+<p>When a view can be updated?</p>
+
+<ol>
+  <li>The view is defined based on one and only one table.</li>
+  <li>The view must include the PRIMARY KEY of the table based upon which the view has been created.</li>
+  <li>The view should not have any field made out of aggregate functions.</li>
+  <li>The view must not have any DISTINCT clause in it’s definition.</li>
+  <li>The view must not have any GROUP BY or HAVING clause in it’s definition.</li>
+  <li>The view must not have any SUBQUERIES in it’s definitions.</li>
+  <li>If the view you want to update is based upon another view, the later should be updatable.</li>
+  <li>Any of the selected output fields (of the view) must not use constants, strings or value expressions.</li>
+</ol>
+
+<blockquote>
+</blockquote>
+
+
+  </div>
+
+</article>
 
       </div>
     </div>
