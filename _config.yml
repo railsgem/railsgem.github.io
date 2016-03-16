@@ -17,3 +17,5 @@ github_username:  railsgem
 
 # Build settings
 markdown: kramdown
+gems:
+  - jekyll-archives
