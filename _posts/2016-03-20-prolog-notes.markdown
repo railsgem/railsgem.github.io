@@ -7,7 +7,7 @@ categories: Prolog
 
 
 
-####1.	Sometimes the order of the terms makes a difference. Try these two queries:
+####1.	Sometimes the order of the terms makes a difference. Try these two queries:####
 
 {% highlight prolog %}
 ?- parent(pat, X), parent(pat, Y), X \= Y.
@@ -18,7 +18,7 @@ categories: Prolog
 
 One of them succeeds but not the other. There are too many possible values of X and Y for which X is not equal to Y. Earlier versions of Prolog would get stuck in an infinite loop testing all the options. The current version of SWI-Prolog avoids the infinite loop, but in doing so it refuses to process the query and therefore fails to find any answer.
 
-####2.	Recursive definition
+####2.	Recursive definition####
 If we want to find all the descendants of a particular person, we could first find all the immediate descendants using the parent relation. We could then repeatedly find all the descendants of the descendants and so on. In Prolog this is done using recursion.
 
 We will now add a recursive definition for the rule descendant(Person, Descendant) which succeeds when Descendant is a direct or indirect descendant of Person. First the base case:
