@@ -1,9 +1,0 @@
----
-layout: post
-title:  "Microsoft College Code Competition (msft3c) 2016"
-date:   2016-03-16 18:15:09 +1100
-categories: Hackathon
----
-
-
-… You Can [Download PDF](https://github.com/railsgem/msft3c2016/blob/master/msft3c%202016.pdf).
