@@ -4,7 +4,8 @@ title:  "Prolog Notes"
 date:   2016-03-20 17:15:09 +1100
 categories: Prolog
 ---
-
+* 目录
+{:toc}
 
 
 ####1.	Sometimes the order of the terms makes a difference. Try these two queries:####
