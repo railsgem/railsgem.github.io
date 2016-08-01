@@ -6,12 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Archive</title>
-  <meta name="description" content="Learn code the pink way.
-">
+  <title>Database system review</title>
+  <meta name="description" content="目录">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://yourdomain.com/archive.html">
+  <link rel="canonical" href="http://yourdomain.com/database/2016/04/14/database-review.html">
   <link rel="alternate" type="application/rss+xml" title="PinkHack" href="http://yourdomain.com/feed.xml">
   <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
 </head>
@@ -64,26 +63,79 @@
 
     <div class="page-content">
       <div class="wrapper">
-        <article class="post">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title">Archive</h1>
+    <h1 class="post-title" itemprop="name headline">Database system review</h1>
+    <p class="post-meta"><time datetime="2016-04-14T08:15:09+10:00" itemprop="datePublished">Apr 14, 2016</time></p>
   </header>
 
-  <div class="post-content">
-    <h2 id="blog-posts">Blog Posts</h2>
+  <div class="post-content" itemprop="articleBody">
+    <h1 id="section">目录</h1>
 
-<ul>
-  <li>
-    <p>14 Apr 2016 » <a href="/database/2016/04/14/database-review.html"> Database system review </a></p>
-  </li>
-  <li>
-    <p>20 Mar 2016 » <a href="/prolog/2016/03/20/prolog-notes.html"> Prolog Notes </a></p>
-  </li>
-  <li>
-    <p>16 Mar 2016 » <a href="/database/2016/03/16/sql-view-cannot-contain-a-subview.html"> SQL View cannot contain a subquery?! </a></p>
+<ul id="markdown-toc">
+  <li><a href="#section" id="markdown-toc-section">目录</a>    <ul>
+      <li><a href="#relational-algebra" id="markdown-toc-relational-algebra">1.Relational Algebra</a>        <ul>
+          <li><a href="#ppthttp120105184250lwchengpptkidppschap05pdf" id="markdown-toc-ppthttp120105184250lwchengpptkidppschap05pdf">1.1 <a href="http://120.105.184.250/lwcheng/ppt/kidpps/CHAP05.pdf">PPT</a></a>            <ul>
+              <li><a href="#selection" id="markdown-toc-selection">1.1.1 selection</a></li>
+              <li><a href="#projection" id="markdown-toc-projection">1.1.2 projection</a></li>
+              <li><a href="#intersection" id="markdown-toc-intersection">1.1.2 Intersection</a></li>
+              <li><a href="#join" id="markdown-toc-join">1.1.3 Join</a></li>
+              <li><a href="#division" id="markdown-toc-division">1.1.4 Division</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
   </li>
 </ul>
+
+<h2 id="relational-algebra">1.Relational Algebra</h2>
+
+<h3 id="ppthttp120105184250lwchengpptkidppschap05pdf">1.1 <a href="http://120.105.184.250/lwcheng/ppt/kidpps/CHAP05.pdf">PPT</a></h3>
+
+<h4 id="selection">1.1.1 selection</h4>
+
+<figure class="highlight"><pre><code class="language-sql" data-lang="sql">  <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">table_a</span> <span class="k">where</span> <span class="n">condition</span> <span class="o">=</span> <span class="n">conditionA</span><span class="p">.</span></code></pre></figure>
+
+<p>It means SELECT something from table_a where <strong>satisfy the conditionA</strong>.</p>
+
+<h4 id="projection">1.1.2 projection</h4>
+
+<figure class="highlight"><pre><code class="language-sql" data-lang="sql">  <span class="k">select</span> <span class="n">column_a</span><span class="p">,</span> <span class="n">columa_b</span> <span class="k">from</span> <span class="n">table_a</span> <span class="p">.</span></code></pre></figure>
+
+<p>It means SELECT <strong>COLUMNS<strong> from table_a .</strong></strong></p>
+
+<h4 id="intersection">1.1.2 Intersection</h4>
+
+<figure class="highlight"><pre><code class="language-sql" data-lang="sql"> <span class="n">table_a</span> <span class="n">intersection</span> <span class="n">table_b</span></code></pre></figure>
+
+<p>table_a and table_b must have <strong>same columns and in same order</strong>.
+Intersection is to pick out the same tuples both in table_a and table_b.</p>
+
+<h4 id="join">1.1.3 Join</h4>
+
+<figure class="highlight"><pre><code class="language-sql" data-lang="sql"> 
+<span class="n">slect</span> <span class="o">*</span> <span class="k">from</span> <span class="n">a</span> <span class="k">left</span> <span class="k">join</span> <span class="n">b</span> <span class="k">on</span> <span class="n">a</span><span class="p">.</span><span class="n">coulumn</span> <span class="o">=</span> <span class="n">a</span><span class="p">.</span><span class="k">column</span><span class="p">;</span></code></pre></figure>
+
+<p>table_a and table_b must have <strong>same columns and in same order</strong>.
+Intersection is to pick out the same tuples both in table_a and table_b.</p>
+
+<h4 id="division">1.1.4 Division</h4>
+
+<p><img src="/images/QQ20160414-0@2x.png" alt="alt text" title="Logo Title Text 1" /></p>
+
+<blockquote>
+  <div class="highlighter-rouge"><pre class="highlight"><code>REFRENCES:  
+</code></pre>
+  </div>
+</blockquote>
+
+<blockquote>
+  <div class="highlighter-rouge"><pre class="highlight"><code>http://120.105.184.250/lwcheng/ppt/kidpps/CHAP05.pdf
+</code></pre>
+  </div>
+</blockquote>
 
   </div>
 
